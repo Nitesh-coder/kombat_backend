@@ -28,8 +28,8 @@ const data = [
       invest: 12000
     },
     {
-      name: 'DREAMS',
-      invest: 12000
+      name: 'ATHELTIA',
+      invest: 12004
     },
   ]
 app.use(cors())
