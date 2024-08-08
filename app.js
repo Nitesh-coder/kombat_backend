@@ -10,7 +10,7 @@ connectDB()
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
-
+app.use(bodyParser.json())
 app.get('/', (req,res)=>{
     res.send("hello world")
 })
@@ -31,6 +31,15 @@ app.post('/api/data',async(req,res)=>{
   await CardModel.create(rData)
   console.log(req.body.url);
   res.send('Data justt received')
+})
+app.post('/api/update', async(req,res)=>{
+  const _id = req.body.id
+  const currentValue = await CardModel.findById(_id)
+  const addedValue = Number(req.body.value)
+  const newValue =  currentValue.invest + addedValue
+  await CardModel.findByIdAndUpdate(_id, {invest: newValue})
+  console.log(newValue);
+  res.send('data received')
 })
 
 app.listen(3000)
