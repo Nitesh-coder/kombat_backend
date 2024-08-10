@@ -38,8 +38,6 @@ app.post('/api/update', async(req,res)=>{
   const addedValue = Number(req.body.value)
   const newValue =  currentValue.invest + addedValue
   await CardModel.findByIdAndUpdate(_id, {invest: newValue})
-  console.log(newValue);
-  res.send('data received')
 })
 
 app.listen(3000)
